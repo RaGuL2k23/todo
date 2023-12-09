@@ -8,6 +8,11 @@ html,body{
     position: relative;
 }
 :root{
+  --priority-size:5px solid;
+  --low-priority: green;
+  --medium-priority:  blue;
+  --high-priority:  red;
+  --todotask-bg-clr:#756be5;
    --form-bg-clr:rgba(255, 105, 180, 0.74);
     --header-clr:rgb(192, 51, 236);
   }
@@ -31,8 +36,7 @@ html,body{
     }
 
   } 
-  #toDoTaskDetail {
-    opacity: 1  ;
+  #toDoTaskDetail { 
     -webkit-appearance: none;
     appearance: none;border: 0;padding:0;
 
@@ -72,7 +76,23 @@ html,body{
     }
 }
 
-
+/*to do task styling */
+[type=checkbox]{
+  accent-color:rgb(121, 236, 103);
+}
  .contentHolder{
-  
+  padding: 50px; 
  }
+ [src*="pen"],[src*="trash"]{
+  width:30px;height: 30px;
+ }
+ .toDoTask{
+  background-color:var(--todotask-bg-clr); 
+  display: flex;
+  align-items: center;justify-content: space-around;
+ }
+ .LOW{
+  border-left: var(--priority-size)  var(--low-priority)
+ }
+ .MEDIUM{border-left: var(--priority-size)  var(--medium-priority);}
+ .HIGH{  border-left: var(--priority-size)  var(--high-priority);   }
