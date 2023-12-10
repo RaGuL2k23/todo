@@ -53,19 +53,19 @@ function makeTaskContainer(){
   task.innerHTML= ` <div   class="toDoTask"><input type="checkbox" name="completeTask" id="completeTask">
     <div>${taskName}</div><div>${taskDue}</div> <div>${taskDescription}</div>
     <div class="img"><img class=edit src="./images/pen.f143f2542420df9040ba2f60576c01b4.svg" alt="pen">
-           </div>
+    <img onclick="deleteTask(this)" class=delete data-name=${taskName} src="./images/icons8-trash-1-dark.912351d015e21b5e38469d33950ebd1b.svg" alt="bin"> </div>              </div>
   </div>`
   task.classList.add(taskPriority); 
   task.setAttribute('data-todoname',`${taskName}`);  
  
-const deleteImg = document.createElement('img');
-deleteImg.setAttribute('data-name', taskName);
-deleteImg.src = './images/icons8-trash-1-dark.912351d015e21b5e38469d33950ebd1b.svg';
-deleteImg.alt = 'bin';
-deleteImg.onclick = function() {
-  deleteTask(this);
-};   
-task.lastChild.append(deleteImg)
+// const deleteImg = document.createElement('img');
+// deleteImg.setAttribute('data-name', taskName);
+// deleteImg.src = './images/icons8-trash-1-dark.912351d015e21b5e38469d33950ebd1b.svg';
+// deleteImg.alt = 'bin';
+// deleteImg.onclick = function() {
+//   deleteTask(this);
+// };   
+// task.lastChild.append(deleteImg)
   return task;
 }
 let deletIcons;
@@ -110,8 +110,7 @@ function displayTasks(){
   taskContainer =document.createElement('div');
   container.append(taskContainer);
   console.log(Tasks.length)
-  Tasks.forEach((task)=>{
-        console.log(Tasks)
+  Tasks.forEach((task)=>{ 
         taskContainer.append(task); 
       }); 
       
@@ -121,10 +120,11 @@ function displayTasks(){
 document.getElementById("inputForm").addEventListener("submit",()=> onFormSubmit(event));
 function addEvents(){j=0; 
   deletIcons = document.querySelectorAll(".delete");//adding event listeners
-  // for (let icn of deletIcons){
-  //   icn.addEventListener('click',()=> deleteTask(icn))
-  // }
-  //  return '';
-}
+  for (deleteImg of deletIcons){
+    deleteImg.onclick = function() {
+      deleteTask(this);
+    }
+   
+}     }
 
 addToDo();addToDo();addToDo();addToDo();
