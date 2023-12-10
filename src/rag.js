@@ -1,8 +1,11 @@
 
 const hero = document.querySelector('.hero');/*getting for bluring purpose only*/
 const container  = document.querySelector('.contentHolder');//right side container to store tasks
+let taskContainer =document.createElement('div');
+container.appendChild(taskContainer)
 const taskBtn = document.querySelector('.taskbtn');
 const taskDetailsDialog = document.getElementById('toDoTaskDetail');//dialog box
+let Tasks =[];
 taskDetailsDialog.innerHTML=` 
   <form id="inputForm" method="" action="" >
             <p>
@@ -33,12 +36,12 @@ submitBtn = document.querySelector('.submitBtn');
 exitBtn = document.querySelector('.exitBtn'); 
 exitBtn.addEventListener('click',()=>taskDetailsDialog.close() );
 taskBtn.addEventListener('click',()=>{
-     taskDetailsDialog.show();
-    hero.classList.add('blur');
+     taskDetailsDialog.show(); 
 });
 
+
 function getFormInput(){ //to store items name,date,due,priority
-  taskName = document.getElementById('taskName').value; 
+  taskName = document.getElementById('taskName').value+Math.random()*9;  ;
   taskDescription = document.getElementById('taskDes').value;
   taskDue =  document.getElementById('due').value;
   taskPriority =  document.getElementById('priority').value;
@@ -46,21 +49,31 @@ function getFormInput(){ //to store items name,date,due,priority
 }
 function makeTaskContainer(){
   const {taskName,taskDue,taskDescription,taskPriority} = getFormInput();
-  task = document.createElement('div');task.classList.add('task');
-  task.innerHTML= ` <div class="toDoTask"><input type="checkbox" name="completeTask" id="completeTask">
+   const task = document.createElement('div');task.classList.add('task');
+  task.innerHTML= ` <div   class="toDoTask"><input type="checkbox" name="completeTask" id="completeTask">
     <div>${taskName}</div><div>${taskDue}</div> <div>${taskDescription}</div>
-    <div><img #edit src="./images/pen.f143f2542420df9040ba2f60576c01b4.svg" alt="pen">
-         <img src="./images/icons8-trash-1-dark.912351d015e21b5e38469d33950ebd1b.svg" alt="bin"> </div>
+    <div class="img"><img class=edit src="./images/pen.f143f2542420df9040ba2f60576c01b4.svg" alt="pen">
+           </div>
   </div>`
-  task.classList.add(taskPriority);
-  task.setAttribute(`data-task`,`${taskName}`);//adding data-test attribute for specifi
-                                                //accessing of task's 
-                                                console.log(task.dataset.task)
+  task.classList.add(taskPriority); 
+  task.setAttribute('data-todoname',`${taskName}`);  
+ 
+const deleteImg = document.createElement('img');
+deleteImg.setAttribute('data-name', taskName);
+deleteImg.src = './images/icons8-trash-1-dark.912351d015e21b5e38469d33950ebd1b.svg';
+deleteImg.alt = 'bin';
+deleteImg.onclick = function() {
+  deleteTask(this);
+};   
+task.lastChild.append(deleteImg)
   return task;
 }
+let deletIcons;
 function addToDo(){//adds task 
-  task = makeTaskContainer();
-  container.append(task)  //appends it
+  const task = makeTaskContainer();
+  Tasks.push(task);  
+  displayTasks() // to call daisplay fn whenever task added  
+addEvents();
 }
 
 function onFormSubmit(event){
@@ -69,7 +82,49 @@ function onFormSubmit(event){
   
   document.getElementById("inputForm").reset();
   taskDetailsDialog.close(); 
+ 
  }
-taskDetailsDialog.show()
-// function editDialog
+ 
+//adding delete fn logics
+function findClickedTask(clickedTaskIcon){
+  let requiredTask,requiredTaskIndex;
+  Tasks.forEach((task,i) => {  
+    if(task.dataset.todoname==clickedTaskIcon.dataset.name) {
+       requiredTask = task;
+       requiredTaskIndex=i;
+    } 
+  });
+  return {task:requiredTask,index:requiredTaskIndex}
+}
+ 
+ 
+function deleteTask(clickedTaskIcon){ 
+   const {task,index} =  findClickedTask(clickedTaskIcon);
+   
+   Tasks.splice(index,1)  ;
+   displayTasks();console.log('del')
+}
+function displayTasks(){ 
+  
+  taskContainer.remove();
+  taskContainer =document.createElement('div');
+  container.append(taskContainer);
+  console.log(Tasks.length)
+  Tasks.forEach((task)=>{
+        console.log(Tasks)
+        taskContainer.append(task); 
+      }); 
+      
+}
+
+
 document.getElementById("inputForm").addEventListener("submit",()=> onFormSubmit(event));
+function addEvents(){j=0; 
+  deletIcons = document.querySelectorAll(".delete");//adding event listeners
+  // for (let icn of deletIcons){
+  //   icn.addEventListener('click',()=> deleteTask(icn))
+  // }
+  //  return '';
+}
+
+addToDo();addToDo();addToDo();addToDo();
