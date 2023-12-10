@@ -1,3 +1,11 @@
+(self["webpackChunkwebpack_demo"] = self["webpackChunkwebpack_demo"] || []).push([["homePage"],{
+
+/***/ "./src/rag.js":
+/*!********************!*\
+  !*** ./src/rag.js ***!
+  \********************/
+/***/ (() => {
+
 
 const hero =            document.querySelector('.hero');/*getting for bluring purpose only*/
 const container  =      document.querySelector('.contentHolder');//right side container to store tasks
@@ -97,3 +105,13 @@ function addEvents(){
 /*adding edit logic*/
 
 addToDo();addToDo();addToDo();addToDo();
+
+/***/ })
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/rag.js"));
+/******/ }
+]);
+//# sourceMappingURL=homePage.js.map

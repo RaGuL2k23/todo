@@ -12,7 +12,7 @@ html,body{
   --low-priority: green;
   --medium-priority:  blue;
   --high-priority:  red;
-  --todotask-bg-clr:#756be5;
+  --todotask-bg-clr:#f28aef;
    --form-bg-clr:rgba(255, 105, 180, 0.74);
     --header-clr:rgb(192, 51, 236);
   }

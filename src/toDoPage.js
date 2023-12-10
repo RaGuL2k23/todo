@@ -1,1 +1,1 @@
-alert('hai')
+alert('hai');console.log('sdfhf')
