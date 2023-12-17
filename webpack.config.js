@@ -1,36 +1,34 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin =  require('html-webpack-plugin');
+const { title } = require('process');
+
 module.exports = {
-  entry: { 
-    homePage:'./src/rag.js',
-    todoTask:'./src/toDoPage.js',
-  },
-   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/index.html',
-      // Inject all chunks into the HTML
-      chunks: ['runtime', 'homePage', 'todoTask'],
-    }),
-  ],
+  entry: './src/index.js',
   output: {
-    filename: '[name].js',
-     path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'), 
+  },
+ 
+  
+  devServer: {
+    static: './dist',
+  }, 
+  module: {
+     rules: [
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+       {
+         test: /\.css$/i,
+         use: ['style-loader', 'css-loader'],
+       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+     ],
    },
   mode: 'development',
-  devtool:'source-map',
-  devServer:{
-    static:'./dist',
-  },
-  
-  optimization: {
-    runtimeChunk: 'single', // Keep the single runtime chunk
-    splitChunks: {
-      chunks: 'all',
-      minSize: 0, // Split all chunks
-    },
-  },
-
-  
+  devtool: 'inline-source-map',
 };
- 
