@@ -21,8 +21,8 @@ submitBtn.addEventListener('click',onFormSubmit)
 
 function onFormSubmit(event){
     event.preventDefault(); //prevent form subbmission
-    let  taskName = document.getElementById('taskName');
-    let newObj =  new createToDo();  
+    document.getElementById('taskName');
+    new createToDo();  
     document.getElementById("inputForm").reset();
     taskDetailsDialog.close(); 
     addEvents();//to newly created tasks too

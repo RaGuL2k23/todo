@@ -32,8 +32,7 @@ function deleteTaskByIndex(index){
  
 
 function changeEditTaskFlag(  value) {
-  isThisAEditedTasks = value;
-  console.log(isThisAEditedTasks,'changeEditTaskFlagfun')
+  isThisAEditedTasks = value; 
 }
 function editTask(clickedPen){ 
     isThisAEditedTasks = true;

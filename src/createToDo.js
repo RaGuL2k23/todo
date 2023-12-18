@@ -26,16 +26,14 @@ class createToDo{
             this.date=date,this.priority=priority
         }   
           
-        if(isThisAEditedTasks == true){//is this a edited task (flag) tackles edited tasks alone 
-                                        //value changeEditTaskFlag to true only whn editing tasks
-            makeTaskContainer(this,pushIndex)
-           console.log('edited',this.isEdited,this)
+        if(isThisAEditedTasks == true){// allows edited tasks to sit in their required index
+                                        // 
+            makeTaskContainer(this,pushIndex) 
            changeEditTaskFlag(this,false) 
     }
      
        else{
-        makeTaskContainer(this )
-        console.log('Not edited',this.isEdited,this)
+        makeTaskContainer(this ) 
        }
      
         objTasks.push(this) 
@@ -53,16 +51,7 @@ class createToDo{
         return {taskName,taskDue,taskDescription,taskPriority}
         }
 
-    onFormSubmit(event){
-        event.preventDefault(); //prevent form subbmission
-        // addToDo(); 
-        
-        document.getElementById("inputForm").reset();
-         taskDetailsDialog.close();
-        
-        }
-    
-        
+      
 
 }
 
