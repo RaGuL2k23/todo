@@ -1,3 +1,6 @@
+import { editTask } from "./form controls";
+import { deleteTask } from "./form controls";
+
 function addEvents(){ 
     let deletIcons = document.querySelectorAll(".delete");//adding event listeners
      for (let deleteImg of deletIcons){

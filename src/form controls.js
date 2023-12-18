@@ -1,10 +1,15 @@
-import { domTasks, displayTasks} from "./todoDom";
+import { domTasks, displayTasks,makeTaskContainer} from "./todoDom";
 import { objTasks } from "./createToDo";
 import { openForm } from "./index";
+
+let pushIndex;let isThisAEditedTasks = false;
+
+ 
+
 function findClickedTask(clickedTaskIcon/*domTasks arry*/){
     //note on how it works : just compare   THE DATASETNAME OF TASK CONTAINER
     // AND (PEN OR DUSTBING ) ICON 
-    // value can be changed in code maketaskcontainer
+    // value can be changeEditTaskFlagd in code maketaskcontainer
     let requiredTask,requiredTaskIndex;
     domTasks.forEach((task,i) => {  
       if(task.dataset.todoname==clickedTaskIcon.dataset.name) {
@@ -13,31 +18,47 @@ function findClickedTask(clickedTaskIcon/*domTasks arry*/){
       } 
     });
     return {task:requiredTask,index:requiredTaskIndex}
-  }
-  let pushIndex;
-  function deleteTaskByIndex(index){
+}
+
+
+
+  
+function deleteTaskByIndex(index){
     pushIndex = index;
     domTasks.splice(index,1) ; 
-    console.log(pushIndex,'nows')
+     
     displayTasks();
 }
+ 
+
+function changeEditTaskFlag(  value) {
+  isThisAEditedTasks = value;
+  console.log(isThisAEditedTasks,'changeEditTaskFlagfun')
+}
 function editTask(clickedPen){ 
+    isThisAEditedTasks = true;
     const {task,index} =  findClickedTask(clickedPen);
     let objTask = objTasks[index]; 
-    let {taskName,taskDue,taskDescription,taskPriority} = objTask.getFormInput(objTask)
-    console.log(objTasks[index],'teset1') 
+    changeEditTaskFlag( true)
+    let {taskName,taskDue,taskDescription,taskPriority} = objTask.getFormInput(objTask) 
     document.getElementById('taskName').value   = objTask.title;
     document.getElementById('taskDes').value    = taskDescription 
     document.getElementById('due').value  = taskDue
-    document.getElementById('priority').value  = taskPriority ;
-    console.log(objTask,objTask.taskPriority)
-    console.log(objTasks[index],'teset1')
+    document.getElementById('priority').value  = taskPriority ; 
     openForm();
-    console.log('culprit',objTask);
-    console.log(objTasks,domTasks)
     deleteTaskByIndex(index);
     
   }
 
 
-  export {findClickedTask,deleteTaskByIndex,editTask,pushIndex}
+
+  function deleteTask(clickedTaskIcon){ 
+    const {task,index} =  findClickedTask(clickedTaskIcon,domTasks);
+    domTasks.splice(index,1)  ; 
+    displayTasks(); 
+ }
+  
+  export {findClickedTask,deleteTaskByIndex,editTask,deleteTask,pushIndex,
+     isThisAEditedTasks, changeEditTaskFlag 
+     
+  }
