@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   closeForm: () => (/* binding */ closeForm),
 /* harmony export */   container: () => (/* binding */ container),
 /* harmony export */   openForm: () => (/* binding */ openForm),
-/* harmony export */   taskBtn: () => (/* binding */ taskBtn),
+/* harmony export */   addTaskBtn: () => (/* binding */ addTaskBtn),
 /* harmony export */   taskContainer: () => (/* binding */ taskContainer)
 /* harmony export */ });
 /* harmony import */ var _createToDo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createToDo */ "./src/createToDo.js");
@@ -228,12 +228,12 @@ document.body.onload=()=> { (0,_addEvents__WEBPACK_IMPORTED_MODULE_1__.addEvents
 
 const container  =      document.querySelector('.contentHolder');//right side container to store tasks
 let taskContainer =     document.createElement('div');container.appendChild(taskContainer)
-const taskBtn     =     document.querySelector('.taskbtn');
+const addTaskBtn     =     document.querySelector('.taskbtn');
 const taskDetailsDialog= document.getElementById('toDoTaskDetail');//dialog box
 const submitBtn = document.querySelector('.submitBtn');
 const exitBtn = document.querySelector('.exitBtn'); 
 exitBtn.addEventListener('click',()=>taskDetailsDialog.close() );
-taskBtn.addEventListener('click',()=>{ 
+addTaskBtn.addEventListener('click',()=>{ 
      openForm()
 });
 submitBtn.addEventListener('click',onFormSubmit)

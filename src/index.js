@@ -8,12 +8,12 @@ document.body.onload=()=> { addEvents()}
 
 const container  =      document.querySelector('.contentHolder');//right side container to store tasks
 let taskContainer =     document.createElement('div');container.appendChild(taskContainer)
-const taskBtn     =     document.querySelector('.taskbtn');
+const addTaskBtn     =     document.querySelector('#addProject');
 const taskDetailsDialog= document.getElementById('toDoTaskDetail');//dialog box
 const submitBtn = document.querySelector('.submitBtn');
 const exitBtn = document.querySelector('.exitBtn'); 
 exitBtn.addEventListener('click',()=>taskDetailsDialog.close() );
-taskBtn.addEventListener('click',()=>{ 
+addTaskBtn.addEventListener('click',()=>{ 
      openForm()
 });
 submitBtn.addEventListener('click',onFormSubmit)
@@ -46,5 +46,5 @@ function openForm(){
 }
 
 export {
-    container,taskBtn,taskContainer,closeForm,openForm
+    container,addTaskBtn,taskContainer,closeForm,openForm
 }
