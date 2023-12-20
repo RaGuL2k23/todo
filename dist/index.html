@@ -10,7 +10,7 @@
      <div class="hero">
        <div class="header">//TO DO📌😎</div>
        <nav class="nav"><ul>
-        <li></li>
+        <li><img id="addProject" src="images/plus-solid.svg" alt=""></li>
         <br><br>
         <li class="taskbtn"> PROJECTd 1</li>
          <li>PROJECT 2</li>
@@ -41,34 +41,28 @@
           <button type=button class="exitBtn"> EXIT</button>
           </form>
       </dialog>
-      <!-- <dialog id="toDoTaskDetail2">
-        <form id="inputForm2" method="" action="" >
+
+      <dialog id="addProjectDialog">
+        <form id="nameInput" method="" action="" >
           <p>
-            <label for="taskName2">TASKNAME</label>
-            <input required minlength=5 maxlength=10 id="taskName2" type="text" >
+            <label for="prjName">PROJECTNAME</label>
+            <input value="rocky" minlength=5 maxlength=10 id="prjName" type="text" >
           </p>
-          <p>
-            <label for="due">DUE DATE</label>
-            <input id = "due"   type="date" min="">
-          </p>
-          <p>
-            <label for="taskDes2">DESCRIPTION</label>
-            <textarea  maxlength=30 rows=5 cols=4 id = "taskDes2"  " type="text " ></textarea>
-          </p>
-          <p>
+          
+          <!-- <p>
             <label for="priority2">PRIORITY</label>
             <select id="priority2" value="option PRIORITY">
               <option name="PRIORITY2" id="">LOW</option>
               <option name="PRIORITY2" id="">MEDIUM</option>
               <option name="PRIORITY2" id="">HIGH</option>
             </select>
-          </p>
-          <button type="submit" class="submitBtn2"  > SUBMIT</button>
-          <button type=button class="Delete2"> DELETE</button>
+          </p> -->
+          <button type="submit" id="submitBtn2"  > SUBMIT</button>
+          <button type=button id="exitBtn2"> EXIT</button>
           </form>
-      </dialog> -->
+      </dialog>
        <div class="contentHolder">
-        <img tooltip="addtask"  id="addProject" height="50px" src="./images/plus-solid.svg" alt="">
+        <img tooltip="addtask"  id="addTask" height="50px" src="./images/plus-solid.svg" alt="">
         </div> 
      </div> 
 </html>

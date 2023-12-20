@@ -1,5 +1,7 @@
 import { greet ,createToDo} from "./createToDo";
-import { addEvents } from "./addEvents"; 
+import { addEvents } from "./addEvents";
+import { addProjectBtn, nameBtn } from "./createProjects";
+
   /* body.onload loads after loading EVERY SINGLE THING IN 
   THE DOCUMENT HENCE ADDING EVENTS ON THIS ACTION IS GREAT */
 
@@ -7,11 +9,14 @@ import { addEvents } from "./addEvents";
 document.body.onload=()=> { addEvents()}
 
 const container  =      document.querySelector('.contentHolder');//right side container to store tasks
-let taskContainer =     document.createElement('div');container.appendChild(taskContainer)
-const addTaskBtn     =     document.querySelector('#addProject');
+let taskContainer =     document.createElement('article');container.appendChild(taskContainer)
+const addTaskBtn     =     document.querySelector('#addTask');
 const taskDetailsDialog= document.getElementById('toDoTaskDetail');//dialog box
 const submitBtn = document.querySelector('.submitBtn');
 const exitBtn = document.querySelector('.exitBtn'); 
+
+
+
 exitBtn.addEventListener('click',()=>taskDetailsDialog.close() );
 addTaskBtn.addEventListener('click',()=>{ 
      openForm()
@@ -33,7 +38,7 @@ function creatTask(event){
     }
   let c =new createToDo('son','descri','24-8-3834','HIGH'); 
   let d = new createToDo('rag ',"desc2",'','MEDIUM');
-  let e = new createToDo('var',"333",'','MEDIUM')
+  let e = new createToDo('var',"333",'','LOW')
   console.log(c)
 
 
@@ -45,6 +50,14 @@ function openForm(){
     taskDetailsDialog.show()
 }
 
+/**functions for project dom*/
+// function rmTskCon(){
+//   taskContainer.remove();
+//   taskContainer =     document.createElement('article');container.appendChild(taskContainer)
+
+// }
+
+
 export {
-    container,addTaskBtn,taskContainer,closeForm,openForm
+     container,addTaskBtn,taskContainer,closeForm,openForm
 }
