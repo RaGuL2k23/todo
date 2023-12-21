@@ -1,4 +1,4 @@
-import { container  } from "./index"; 
+import { container ,resetForm } from "./index"; 
 import {  pushIndex  } from "./form controls";
 
 
@@ -18,6 +18,7 @@ function makeTaskContainer(obj,pushIndex){
            
         pushTask(domTasks,task,pushIndex)
         displayTasks(); 
+        resetForm();
 }
 
 function pushTask(arrayName,task,index= arrayName.length ){

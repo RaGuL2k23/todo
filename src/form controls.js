@@ -1,6 +1,6 @@
 import { domTasks, displayTasks,makeTaskContainer} from "./todoDom";
 import { objTasks } from "./createToDo";
-import { openForm } from "./index";
+import { resetForm, openForm } from "./index";
 
 let pushIndex;let isThisAEditedTasks = false;
 
@@ -26,7 +26,6 @@ function findClickedTask(clickedTaskIcon/*domTasks arry*/){
 function deleteTaskByIndex(index){
     pushIndex = index;
     domTasks.splice(index,1) ; 
-     
     displayTasks();
 }
  

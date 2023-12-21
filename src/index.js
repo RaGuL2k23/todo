@@ -25,8 +25,7 @@ submitBtn.addEventListener('click',onFormSubmit)
 
 
 function onFormSubmit(event){
-    event.preventDefault(); //prevent form subbmission
-    document.getElementById('taskName');
+    event.preventDefault(); //prevent form subbmission 
     new createToDo();  
     document.getElementById("inputForm").reset();
     taskDetailsDialog.close(); 
@@ -44,10 +43,13 @@ function creatTask(event){
 
   // opening and closin gforms 
 function closeForm(){ 
-    taskDetailsDialog.close();  
+    taskDetailsDialog.close(); 
     }
 function openForm(){
     taskDetailsDialog.show()
+}
+function resetForm(){ 
+  document.getElementById("inputForm").reset(); 
 }
 
 /**functions for project dom*/
@@ -59,5 +61,5 @@ function openForm(){
 
 
 export {
-     container,addTaskBtn,taskContainer,closeForm,openForm
+    resetForm, c,d,e,container,addTaskBtn,taskContainer,closeForm,openForm
 }

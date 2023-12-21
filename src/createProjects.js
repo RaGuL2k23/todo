@@ -8,7 +8,7 @@ const exitBtn = document.getElementById("exitBtn2");
 const navBar = document.querySelector(".nav");
 const nameInput = document.querySelector('#prjName')
  let i=1;
-
+let projects=[]
 class createProjects {
     constructor(name){
         if(name == undefined){
@@ -18,12 +18,12 @@ class createProjects {
         this.name = "rocky"+i++
     }
    static addProjectName(){/*adds to nav*/
-        alert(nameInput.value)
+       
         const projectName = document.createElement('div');
-        projectName.textContent=nameInput.value;
-        navBar.append(projectName);
+        projectName.textContent=nameInput.value+i++;
+        navBar.append(projectName,4);
         projectName.onclick=()=>{
-            alert('tuh');displayProject();
+            displayProject();
         }
 
     }
@@ -41,10 +41,12 @@ nameBtn.onclick=(event)=>{
 /*dom stuff*/
  
 let one = new createProjects('project2');
+let two = new createProjects('r');
+createProjects.addProjectName();
 createProjects.addProjectName();
 
 
 function displayProject(){ 
  
 }
-export{addProjectBtn,nameBtn}
+export{addProjectBtn,nameBtn,projects}
